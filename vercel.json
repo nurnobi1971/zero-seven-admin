@@ -1,0 +1,10 @@
+{
+  "build": {
+    "env": {
+      "FLUTTER_VERSION": "3.22.0"
+    }
+  },
+  "installCommand": "git clone https://github.com/flutter/flutter.git -b stable --depth 1 && export PATH=\"$PATH:$PWD/flutter/bin\" && flutter config --enable-web",
+  "buildCommand": "flutter create . && flutter pub get && flutter build web --release",
+  "outputDirectory": "build/web"
+}
