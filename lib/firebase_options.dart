@@ -1,23 +1,45 @@
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
+import 'package:flutter/foundation.dart'
+    show defaultTargetPlatform, kIsWeb, TargetPlatform;
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyAXuu7XO_YoHyy9__MQqb7wUvgc7Tjd62M",
-    authDomain: "zero-seven-admin.firebaseapp.com",
-    projectId: "zero-seven-admin",
-    storageBucket: "zero-seven-admin.firebasestorage.app",
-    messagingSenderId: "609729295172",
-    appId: "1:609729295172:web:862560fce66f3e765d9d11",
-    measurementId: "G-6PR2W9P6XM"
-  };
+class DefaultFirebaseOptions {
+  static FirebaseOptions get currentPlatform {
+    if (kIsWeb) {
+      return web;
+    }
+    switch (defaultTargetPlatform) {
+      case TargetPlatform.android:
+        return android;
+      case TargetPlatform.iOS:
+        return ios;
+      default:
+        throw UnsupportedError('Not supported');
+    }
+  }
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'তোমার_apiKey',
+    appId: 'তোমার_appId',
+    messagingSenderId: 'তোমার_senderId',
+    projectId: 'তোমার_projectId',
+    authDomain: 'তোমার_projectId.firebaseapp.com',
+    storageBucket: 'তোমার_projectId.appspot.com',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'তোমার_Android_apiKey',
+    appId: 'তোমার_Android_appId',
+    messagingSenderId: 'তোমার_senderId',
+    projectId: 'তোমার_projectId',
+    storageBucket: 'তোমার_projectId.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'তোমার_iOS_apiKey',
+    appId: 'তোমার_iOS_appId',
+    messagingSenderId: 'তোমার_senderId',
+    projectId: 'তোমার_projectId',
+    storageBucket: 'তোমার_projectId.appspot.com',
+    iosBundleId: 'com.example.zeroSevenAdmin',
+  );
+}
