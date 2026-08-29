@@ -1,0 +1,20 @@
+name: zero_seven_admin
+description: Zero Seven Admin Panel
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_core: ^2.24.2
+  firebase_auth: ^4.15.3
+  cloud_firestore: ^4.13.6
+  shared_preferences: ^2.2.2
+  csv: ^5.0.2
+  intl: ^0.18.1
+
+flutter:
+  uses-material-design: true
