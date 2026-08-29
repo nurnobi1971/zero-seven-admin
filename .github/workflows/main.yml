@@ -1,0 +1,19 @@
+name: Flutter Web Build
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.22.0'
+    - run: flutter pub get
+    - run: flutter config --enable-web
+    - run: flutter build web --release
+    - uses: actions/upload-artifact@v3
+      with:
+        name: web-build
+        path: build/web
